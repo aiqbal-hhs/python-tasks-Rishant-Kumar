@@ -131,7 +131,7 @@ def topping_menu():
         )
 
 
-# Menu function prints out the instructions for the user so they can use a
+# main Menu function prints out the instructions for the user so they can use a
 # mode option for the Henderson Pizza Palace service.
 def main_menu():
     """Prints out the instructions for the user so they can use an action 
@@ -146,7 +146,7 @@ def main_menu():
     time.sleep(0.5)
 
 
-# Menu function prints out the instructions for the user so they can use a
+# service Menu function prints out the instructions for the user so they can use a
 # service option for the Henderson Pizza Palace service.
 def servicing_menu(order_cost):
     """Prints out the instructions for the user so they can use a 
