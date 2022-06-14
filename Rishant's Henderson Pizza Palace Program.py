@@ -146,8 +146,8 @@ def main_menu():
     time.sleep(0.5)
 
 
-# service Menu function prints out the instructions for the user so they can use a
-# service option for the Henderson Pizza Palace service.
+# service Menu function prints out the instructions for the user so they
+# can use a service option for the Henderson Pizza Palace service.
 def servicing_menu(order_cost):
     """Prints out the instructions for the user so they can use a 
     service option for the Henderson Pizza Palace service."""
@@ -221,7 +221,7 @@ def servicing_menu(order_cost):
                         "\033[0m"
                     )
                     time.sleep(1)
-
+                # if there is no name
                 else:
                     print(
                         "\n\033[1;91m\033[40m"
@@ -279,12 +279,13 @@ def servicing_menu(order_cost):
                         "Is the contact information shown above correct?"
                         "\033[0m"
                     )
+                    # ask to enter yes or no for their contact info
                     correct_info = (
                         input("\033[1;92mAnswer ('Yes' or 'No'): \033[0m")
                         .strip()
                         .lower()
                     )
-
+                    # if no, then they will be sent back to the top of loop
                     if correct_info == "no" or correct_info == "n":
                         print(
                             "\n\033[1;91m"
