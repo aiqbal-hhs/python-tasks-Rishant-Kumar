@@ -10,7 +10,7 @@ width = window.winfo_screenwidth()
 height =window.winfo_screenheight()
 #setting tkinter window size
 window.geometry("%dx%d" % (width, height))
-window.title("Geeeks For Geeks")
+window.title("FULLSCREEN!!!!!")
 label = ttk.Label(window, text="Hello Tkinter!")
 label.pack()
  
