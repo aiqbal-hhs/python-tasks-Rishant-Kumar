@@ -14,7 +14,6 @@ class Book:
     self.name = name
     self.amount_sold = amount_sold
     self.amount_of_books = amount_of_books
-    book_list.append(self)
   
   # restock method adds the amount of books to stock
   def restock(self, amount):
@@ -34,9 +33,8 @@ class Book:
       return False
   
 
-
-#lists
-book_list = []
+# book name list
+book_list = ["Super Dude", "Lizard Man", "Water Woman"]
 
 # Create instances of the class
 super_dude = Book("Super Dude", 0, 8)
@@ -51,8 +49,12 @@ stock_level_frame = ttk.LabelFrame(root, text="Current Stock Levels")
 stock_level_frame.grid(row=0, column=0, padx=10, pady=10, sticky="NSEW")
 
 # Create the stock level frame
-restock_level_frame = ttk.LabelFrame(root, text="Restock Comics")
-restock_level_frame.grid(row=10, column=115, padx=10, pady=10, sticky="NSEW")
+restock_frame = ttk.LabelFrame(root, text="Restock Comics")
+restock_frame.grid(row=10, column=10, padx=10, pady=10, sticky="NSEW")
+
+# Create the stock level frame
+sell_frame = ttk.LabelFrame(root, text="Sell Comics")
+sell_frame.grid(row=20, column=20, padx=10, pady=10, sticky="NSEW")
 
 # text for each comic 
 super_dude_text = StringVar()
@@ -79,10 +81,17 @@ water_woman_label.grid(row=15, column=5, columnspan=2, padx=10, pady=10)
 
 chosen_book_restock = StringVar()
 chosen_book_restock.set(book_list[0])
+
 # combobox for selecting the comic book to restock
-comic_book_restock_combobox = ttk.Combobox(restock_level_frame, textvariable=chosen_book_restock, state="readonly")
-chosen_book_restock['values'] = chosen_book_restock
-comic_book_restock_combobox.pack()
+comic_book_restock_combobox = ttk.Combobox(restock_frame, textvariable=chosen_book_restock, value=book_list, justify="center", state="readonly")
+comic_book_restock_combobox.grid(row=20, column=1, padx=10, pady=10)
+
+entry_text = StringVar()
+entry_text.set("Enter a whole number: ")
+
+# button for restock action
+restock_entry = ttk.Entry(restock_frame, textvariable=entry_text, width=20)
+restock_entry.grid(row=20, column=5)
 
 
 
