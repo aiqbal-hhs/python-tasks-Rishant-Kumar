@@ -45,7 +45,7 @@ def update_summary():
     stock_string = ""
     stock_string += "List of Comics:\n\n"
 
-    # Append each comic's name, and stock to the summary label
+    # Append each comic's name, and stock to the current stock level label
     for comic in comic_list:
         stock_string += "{}: {}\n".format(comic.name, comic.stock)
         total_stock_sold += comic.sold
@@ -76,7 +76,7 @@ def mode_restock():
 # Create a sell function
 def sell_stock(comic):
     if comic.sell(amount.get()):
-        action_feedback_label.config(fg="lime")
+        action_feedback_label.config(fg="#000fff000")
         action_feedback.set("Success! {} {} comics were sold.".format(amount.get(), comic.name))
     else:
         action_feedback_label.config(fg="red")
@@ -134,69 +134,44 @@ root.title("Comic Book Stock Manager - © Rishant")
 # Set color of color window background
 root.configure(bg="white")
 
-# Comic frame
-comic_frame = Frame(root, width=300, height=300, bg="white")
-comic_frame.pack(padx=10, pady=5)
+# root frame
+root_frame = Frame(root, width=300, height=300, bg="white")
+root_frame.pack(padx=10, pady=5)
 
 # Top frame (row 0, column 0)
-top_frame = Frame(comic_frame, width=300, height=250, bg=tertiary_color)
+top_frame = ttk.Frame(root_frame, width=300, height=250)
 top_frame.grid(row=0, column=0, columnspan=2, padx=10, pady=5, sticky="WE")
 
 # Comic label - Heading (row 0, column 0)
-comic_label = Label(top_frame,
-                        text="Comic Book Store",
-                        font=("Ariel", "16", "bold"),
-                        bg=primary_color,
-                        padx=240, pady=5, anchor="center"
-                        )
+comic_label = Label(top_frame, text="Comic Book Stock Manager", font=("Courier", "16", "bold"), bg=primary_color, padx=240, pady=5, anchor="center")
 comic_label.grid(row=0, column=0, columnspan=1, padx=10, pady=10, sticky="N")
 
 # Left frame (row 1, column 0)
-left_frame = Frame(comic_frame, width=300, height=250, bg=tertiary_color)
+left_frame = ttk.LabelFrame(root_frame, text="left frame Current Stock Level", width=300, height=250)
 left_frame.grid(row=1, column=0, padx=10, pady=5, sticky="NS")
 
-# Summary label - (row 0, column 0)
-summary_label = Label(left_frame,
-                        text="Stock Summary",
-                        font=("Ariel", "16", "bold"),
-                        width=22,
-                        bg=secondary_color,
-                        padx=10, pady=5
-                        )
-summary_label.grid(row=0, column=0, columnspan=1, padx=10, pady=10)
+# Current Stock Level label - (row 0, column 0)
+current_stock_level_label = Label(left_frame, text="Current Stock Level", font=("Courier", "16", "bold"), width=22, padx=10, pady=5)
+current_stock_level_label.grid(row=0, column=0, columnspan=1, padx=10, pady=10)
 
 # Create and set comic details
 comic_details = StringVar()
 update_summary()
 
 # Stock Details label - (row 1, column 0)
-details_label = Label(left_frame, textvariable=comic_details,
-                      font=("Ariel", "12", "bold"),
-                      bg=accent_color, padx=10, pady=5
-                      )
+details_label = Label(left_frame, textvariable=comic_details, font=("Courier", "12", "bold"), bg=accent_color, padx=10, pady=5)
 details_label.grid(row=1, column=0, columnspan=1, padx=10, pady=10)
 
 # Right frame (row 1, column 1)
-right_frame = Frame(comic_frame, width=300, height=250, bg=tertiary_color)
+right_frame = ttk.LabelFrame(root_frame, width=300, height=250)
 right_frame.grid(row=1, column=1, padx=10, pady=5, sticky="NS")
 
 # Stock Manager label - (row 0, column 0)
-mode_label = Label(right_frame,
-                        text="Stock Manager",
-                        font=("Ariel", "16", "bold"),
-                        width=22,
-                        bg=secondary_color,
-                        padx=10, pady=5
-                        )
+mode_label = Label(right_frame, text="Stock Manager", font=("Courier", "16", "bold"), width=22, padx=10, pady=5)
 mode_label.grid(row=0, column=0, columnspan=2, padx=10, pady=10)
 
 # Mode label - (row 1, column 0)
-mode_label = Label(right_frame,
-                        text="Mode:",
-                        font=("Ariel", "12", "bold"),
-                        bg=accent_color,
-                        pady=2
-                        )
+mode_label = Label(right_frame, text="Mode:", font=("Courier", "12", "bold"), bg=accent_color, pady=2)
 mode_label.grid(row=1, column=0, padx=10, pady=5, sticky="WE")
 
 # Radiobutton LabelFrame - (row 1, column 1)
@@ -208,26 +183,15 @@ mode_var = StringVar()
 mode_var.set("sell")
 
 # Sell Radiobutton (row 0, column 0)
-sell_radio = ttk.Radiobutton(mode_label_frame, text="Sell",
-                             value="sell", variable=mode_var,
-                             command=lambda: mode_sell()
-                              )
+sell_radio = ttk.Radiobutton(mode_label_frame, text="Sell", value="sell", variable=mode_var, command=lambda: mode_sell())
 sell_radio.grid(row=0, column=0, padx=10, pady=2)
 
 # Restock Radiobutton (row 0, column 1)
-restock_radio = ttk.Radiobutton(mode_label_frame, text="Restock",
-                                value="restock", variable=mode_var,
-                                command=lambda: mode_restock()
-                              )
+restock_radio = ttk.Radiobutton(mode_label_frame, text="Restock", value="restock", variable=mode_var,command=lambda: mode_restock())
 restock_radio.grid(row=0, column=1, padx=10, pady=2)
 
 # Comic Combobox label - (row 2, column 0)
-comic_combobox_label = Label(right_frame,
-                        text="Comic:",
-                        font=("Ariel", "12", "bold"),
-                        bg=accent_color,
-                        padx=10, pady=2
-                        )
+comic_combobox_label = Label(right_frame, text="Comic:", font=("Courier", "12", "bold"), bg=accent_color, padx=10, pady=2)
 comic_combobox_label.grid(row=2, column=0, columnspan=1, padx=10, pady=5, sticky="WE")
 
 # Comic Combobox
@@ -236,19 +200,12 @@ chosen_comic = StringVar()
 chosen_comic.set(comic_names[0])
 
 # Create a Combobox to select the comic - (row 2, column 1)
-comic_combobox = ttk.Combobox(right_frame, textvariable=chosen_comic, state="readonly",
-                              font=("Ariel", "12"),
-                              width=20)
+comic_combobox = ttk.Combobox(right_frame, textvariable=chosen_comic, state="readonly", font=("Courier", "12"), width=20)
 comic_combobox['values'] = comic_names
 comic_combobox.grid(row=2, column=1, columnspan=1, padx=10, pady=10, sticky="WE")
 
 # Entry Amount label - (row 3, column 0)
-amount_label = Label(right_frame,
-                        text="Amount:",
-                        font=("Ariel", "12", "bold"),
-                        bg=accent_color,
-                        padx=5, pady=2
-                        )
+amount_label = Label(right_frame, text="Amount:", font=("Courier", "12", "bold"), bg=accent_color, padx=5, pady=2)
 amount_label.grid(row=3, column=0, columnspan=1, padx=10, pady=5, sticky="WE")
 amount_label.grid_remove()
 
@@ -258,9 +215,7 @@ amount = IntVar()
 amount.set("")
 
 # Create an entry to type in amount
-amount_entry = Entry(right_frame, textvariable=amount,
-                     font=("Ariel", "12"), width=7
-                     )
+amount_entry = Entry(right_frame, textvariable=amount, font=("Courier", "12"), width=7)
 amount_entry.grid(row=3, column=1, columnspan=2, padx=10, pady=10, sticky="W")
 amount_entry.grid_remove()
 
@@ -269,21 +224,13 @@ chosen_mode = StringVar()
 chosen_mode.set(mode_list[0])
 
 # Create a Button to sell or restock comics - (row 4, column 0)
-manage_stock_button = Button(right_frame, textvariable=chosen_mode,
-                              font=("Ariel", "12"),
-                              width=20, command=manage_stock
-                     )
+manage_stock_button = Button(right_frame, textvariable=chosen_mode, font=("Courier", "12"),width=20, command=manage_stock)
 manage_stock_button.grid(row=4, column=0, columnspan=2, padx=10, pady=10)
 
 # Create an action feedback label - (row 4, column 0)
 action_feedback = StringVar()
 action_feedback.set("Welcome!")
-action_feedback_label = Label(right_frame, textvariable=action_feedback,
-                              font=("Ariel", "12"),
-                              bg=tertiary_color, fg="white",
-                              wrap=290,
-                              padx=5, pady=2
-                              )
+action_feedback_label = Label(right_frame, textvariable=action_feedback, font=("Courier", "12"), bg=tertiary_color, fg="white", wrap=290, padx=5, pady=2)
 action_feedback_label.grid(row=5, column=0, columnspan=2, padx=10, pady=10)
 
 # Run the main window loop
