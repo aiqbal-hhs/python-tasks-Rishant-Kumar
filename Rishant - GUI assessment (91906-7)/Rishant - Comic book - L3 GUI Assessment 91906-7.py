@@ -110,11 +110,12 @@ def manage_stock():
     update_summary()
     amount.set("")
 
-# Formatting Variables...
-primary_color = "#38c8f5" #sky blue
-secondary_color = "#e31679" #deep pink
-tertiary_color = "#242424" #light black
-accent_color = "#a6e5d0" #pale blue
+# creating colour  Variables...
+primary_color = "#03a9f4" # nice blue
+secondary_color = "#e91e63" #
+message_box_color = "#242424" 
+accent_color = "#a6e5d0" 
+background_colour = "#5C7E96" #grey blue
 
 # Setup Lists
 comic_list = []
@@ -132,26 +133,26 @@ root = Tk()
 root.title("Comic Book Stock Manager - © Rishant")
 
 # Set color of color window background
-root.configure(bg="white")
+root.configure(bg=background_colour)
 
 # root frame
-root_frame = Frame(root, width=300, height=300, bg="white")
+root_frame = Frame(root, width=300, height=300, bg=background_colour)
 root_frame.pack(padx=10, pady=5)
 
 # Top frame (row 0, column 0)
-top_frame = ttk.Frame(root_frame, width=300, height=250)
-top_frame.grid(row=0, column=0, columnspan=2, padx=10, pady=5, sticky="WE")
+top_title_frame = Frame(root_frame, width=300, height=250, bg="black")
+top_title_frame.grid(row=0, column=0, columnspan=2, padx=10, pady=5, sticky="WE")
 
 # Comic label - Heading (row 0, column 0)
-comic_label = Label(top_frame, text="Comic Book Stock Manager", font=("Courier", "16", "bold"), bg=primary_color, padx=240, pady=5, anchor="center")
-comic_label.grid(row=0, column=0, columnspan=1, padx=10, pady=10, sticky="N")
+title_label = Label(top_title_frame, text="Comic Book Stock Manager", font=("Courier", "16", "bold"), bg=primary_color, padx=240, pady=5, anchor="center")
+title_label.grid(row=0, column=0, columnspan=1, padx=3, pady=3, sticky="N")
 
 # Left frame (row 1, column 0)
-left_frame = ttk.LabelFrame(root_frame, text="left frame Current Stock Level", width=300, height=250)
+left_frame = Frame(root_frame, width=300, height=250)
 left_frame.grid(row=1, column=0, padx=10, pady=5, sticky="NS")
 
 # Current Stock Level label - (row 0, column 0)
-current_stock_level_label = Label(left_frame, text="Current Stock Level", font=("Courier", "16", "bold"), width=22, padx=10, pady=5)
+current_stock_level_label = Label(left_frame, text="Current Stock Level", font=("Courier", "16", "bold"), bg=secondary_color, borderwidth=3, relief="raised", width=22, padx=10, pady=5)
 current_stock_level_label.grid(row=0, column=0, columnspan=1, padx=10, pady=10)
 
 # Create and set comic details
@@ -163,11 +164,11 @@ details_label = Label(left_frame, textvariable=comic_details, font=("Courier", "
 details_label.grid(row=1, column=0, columnspan=1, padx=10, pady=10)
 
 # Right frame (row 1, column 1)
-right_frame = ttk.LabelFrame(root_frame, width=300, height=250)
+right_frame = Frame(root_frame, width=300, height=250)
 right_frame.grid(row=1, column=1, padx=10, pady=5, sticky="NS")
 
 # Stock Manager label - (row 0, column 0)
-mode_label = Label(right_frame, text="Stock Manager", font=("Courier", "16", "bold"), width=22, padx=10, pady=5)
+mode_label = Label(right_frame, text="Stock Manager", font=("Courier", "16", "bold"), bg=secondary_color, borderwidth=3, relief="raised", width=22, padx=10, pady=5)
 mode_label.grid(row=0, column=0, columnspan=2, padx=10, pady=10)
 
 # Mode label - (row 1, column 0)
@@ -224,13 +225,13 @@ chosen_mode = StringVar()
 chosen_mode.set(mode_list[0])
 
 # Create a Button to sell or restock comics - (row 4, column 0)
-manage_stock_button = Button(right_frame, textvariable=chosen_mode, font=("Courier", "12"),width=20, command=manage_stock)
+manage_stock_button = Button(right_frame, textvariable=chosen_mode, font=("Courier", "12"),width=20, command=manage_stock, bg=accent_color)
 manage_stock_button.grid(row=4, column=0, columnspan=2, padx=10, pady=10)
 
 # Create an action feedback label - (row 4, column 0)
 action_feedback = StringVar()
 action_feedback.set("Welcome!")
-action_feedback_label = Label(right_frame, textvariable=action_feedback, font=("Courier", "12"), bg=tertiary_color, fg="white", wrap=290, padx=5, pady=2)
+action_feedback_label = Label(right_frame, textvariable=action_feedback, font=("Courier", "12"), bg=message_box_color, fg="white", wrap=290, padx=5, pady=2)
 action_feedback_label.grid(row=5, column=0, columnspan=2, padx=10, pady=10)
 
 # Run the main window loop
