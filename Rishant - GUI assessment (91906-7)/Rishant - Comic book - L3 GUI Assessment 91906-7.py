@@ -5,7 +5,7 @@ from tkinter import ttk
 
 ##########   CLASS CODE   ##########
 class Book:
-    """he Book class stores the details of each Book and has methods to Sell books, Restock books and calculates the amount of books sold and remaining stock of these books"""
+    """The Book class stores the details of each Book and has methods to Sell books, Restock books and calculates the amount of books sold and remaining stock of these books"""
     def __init__(self, name, stock, sold):
         self.name = name
         self.stock = stock
@@ -111,9 +111,9 @@ def manage_stock():
     amount.set("")
 
 # creating colour  Variables...
-primary_color = "#03a9f4" # nice blue
-secondary_color = "#e91e63" #
-message_box_color = "#242424" 
+primary_color = "#03a9f4" # Deep Sky Blue
+secondary_color = "#e91e63" # ruby
+message_box_color = "#242424" # nero (light black)
 accent_color = "#a6e5d0" 
 background_colour = "#5C7E96" #grey blue
 
