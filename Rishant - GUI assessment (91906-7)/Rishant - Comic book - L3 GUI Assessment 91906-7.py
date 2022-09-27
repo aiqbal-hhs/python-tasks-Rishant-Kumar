@@ -139,8 +139,8 @@ def manage_stock():
 primary_color = "#03a9f4" # Deep Sky Blue
 secondary_color = "#e91e63" # Ruby
 message_box_color = "#242424" # Nero (light black)
-accent_color = "#429EBD" 
-background_colour = "#053F5C" # Grey Blue
+accent_color = "#429EBD" # Pelorous
+background_colour = "#053F5C" # Teal Blue
 
 # Setup Lists
 comic_list = []
