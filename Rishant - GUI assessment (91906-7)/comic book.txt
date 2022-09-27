@@ -1,0 +1,3 @@
+Super Dude,8,8
+Lizard Man,12,2
+Water Woman,3,0
