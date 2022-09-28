@@ -114,7 +114,7 @@ def sell_stock(comic):
 def restock_stock(comic):
     try:
         if comic.restock(amount.get()):
-            action_feedback_label.config(fg="green")
+            action_feedback_label.config(fg="lime")
             action_feedback.set("Success! {} {} comics were restocked."
             .format(amount.get(), comic.name))
         else:
@@ -153,9 +153,12 @@ mode_list = ['Sell', 'Restock']
 
 # Creating instances of comic class
 get_data()
+
+# inital amount of books
 #super_dude = Book("Super Dude", 8, 0)
 #lizard_man = Book("Lizard Man", 12, 0)
 #water_woman = Book("Water Woman", 3, 0)
+
 comic_names = create_name_list()
 
 ##########   COMIC GUI CODE   ##########
