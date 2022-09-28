@@ -110,7 +110,7 @@ def sell_stock(comic):
         action_feedback_label.config(fg="red")
         action_feedback.set("Uh Oh! {} is out of stock.".format(comic.name))
 
-# Create a sell function
+# restock function
 def restock_stock(comic):
     try:
         if comic.restock(amount.get()):
