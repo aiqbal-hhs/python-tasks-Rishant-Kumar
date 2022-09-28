@@ -34,7 +34,6 @@ class Book:
             return False
 
 ##########   FUNCTION AND SETUP - COMIC WINDOW   ##########
-
 # Creates a name list to store every comic name in
 def create_name_list():
   name_list = []
@@ -44,7 +43,10 @@ def create_name_list():
 
 # Reads the comic.txt for the instances of the comic class
 def get_data():
-    comic_file = open("G:\My Drive\DGT 200\GUI\Rishant - GUI assessment (91906-7)\comic book.txt","r")
+    comic_file = open(
+    "G:\My Drive\DGT 200\GUI\Rishant - GUI assessment (91906-7)\comic book.txt"
+    ,"r"
+    )
     line_list = comic_file.readlines()
 
     for line in line_list:
@@ -58,7 +60,10 @@ def update_summary():
     total_stock_sold = 0
     stock_string = ""
     stock_string += "List of Comics:\n\n"
-    comic_file = open("G:\My Drive\DGT 200\GUI\Rishant - GUI assessment (91906-7)\comic book.txt","w")
+    comic_file = open(
+    "G:\My Drive\DGT 200\GUI\Rishant - GUI assessment (91906-7)\comic book.txt"
+    ,"w"
+    )
 
     # Append each comic's name, and stock to the current stock level label
     for comic in comic_list:
