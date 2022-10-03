@@ -41,7 +41,7 @@ def create_name_list():
     name_list.append(comic.name)
   return name_list
 
-# Reads the comic.txt for the instances of the comic class
+# Reads the comic book.txt for the instances of the comic class
 def get_data():
     comic_file = open(
     "G:\My Drive\DGT 200\GUI\Rishant - GUI assessment (91906-7)\comic book.txt"
