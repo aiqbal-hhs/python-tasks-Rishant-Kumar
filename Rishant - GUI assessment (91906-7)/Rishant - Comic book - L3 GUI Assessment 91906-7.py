@@ -103,7 +103,7 @@ def mode_restock():
 # Create a sell function
 def sell_stock(comic):
     if comic.sell(amount.get()):
-        action_feedback_label.config(fg="#000fff000")
+        action_feedback_label.config(fg="lime")
         action_feedback.set("Success! {} {} comics were sold.".format(
             amount.get(), comic.name))
     else:
