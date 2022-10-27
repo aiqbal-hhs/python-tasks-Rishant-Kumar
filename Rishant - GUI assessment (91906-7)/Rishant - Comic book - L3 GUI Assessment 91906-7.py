@@ -3,6 +3,7 @@
 from tkinter import *
 from tkinter import ttk
 
+
 ##########   CLASS CODE   ##########
 class Book:
     """The Book class stores the details of each Book and has methods to Sell 
@@ -32,6 +33,7 @@ class Book:
             return True
         else:
             return False
+
 
 ##########   FUNCTION AND SETUP - COMIC WINDOW   ##########
 # Creates a name list to store every comic name in
@@ -140,6 +142,8 @@ def manage_stock():
     update_summary()
     amount.set("")
 
+
+##########   DECLEARING VARIABLES, LISTS AND CALLING FUNCTION(S)   ##########
 # creating colour  Variables...
 primary_color = "#03a9f4" # Deep Sky Blue
 secondary_color = "#e91e63" # Ruby
@@ -160,6 +164,7 @@ get_data()
 #water_woman = Book("Water Woman", 3, 0)
 
 comic_names = create_name_list()
+
 
 ##########   COMIC GUI CODE   ##########
 # Create a window with a title
